@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Excel Data";
+}
+@model System.Data.DataTable
+@using System.Data;
+
+<div class="row">
+    <div class="container">
+        <br />
+    <label>Preview Data:</label> 
+
+        <a href="~/Home/DownloadFile?path=@ViewBag.Path&file=@ViewBag.File" class="btn btn-info btn-sm pull-right" style="margin-bottom:10px">Download Excel</a>
+
+        <table class="table table-bordered table-responsive">
+            <thead style="background-color:lightslategray; color:whitesmoke">
+                <tr>
+                    @foreach (DataColumn col in Model.Columns)
+                    {
+                        <th>@col.ColumnName</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (DataRow row in Model.Rows)
+                {
+                    <tr>
+                        @foreach (DataColumn col in Model.Columns)
+                        {
+                            <td>@row[col.ColumnName]</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Home";
+} 
+@using ClosedXML.Excel
+
+<div class="row">
+    <div class="container">
+        <br />
+        @using (Html.BeginForm("ExtractData", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                <input type="file" class="form-control" name="ExcelFile" />
+            </div>
+            <input type="submit" class="btn btn-info" value="Extract Data" />
+        }
+ 
+    </div>
+</div>
